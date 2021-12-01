@@ -12,8 +12,13 @@ const categoriesRoutes = require("./routes/categories");
 const productsRoutes = require("./routes/products");
 const usersRoutes = require("./routes/users");
 const ordersRoutes = require("./routes/orders");
+const authJwt = require("./helpers/jwt");
+const errorHandler = require("./helpers/error-handler");
 app.use(cors());
 app.options("*", cors());
+// app.use(authJwt());
+app.use("/public/uploads", express.static(__dirname + "/public/uploads"));
+app.use(errorHandler);
 //////////////////////////// Middlewares
 
 app.use(bodyParser.json());
